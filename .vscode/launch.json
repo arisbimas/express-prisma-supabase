@@ -1,0 +1,71 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // ------------------------------
+            // 1) DEBUG EXPRESS SERVER
+            // ------------------------------
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Express",
+            "program": "${workspaceFolder}/src/server.js",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "NODE_ENV": "development"
+            },
+            "console": "integratedTerminal",
+            "restart": true,
+            "runtimeExecutable": "node",
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+        {
+            // ------------------------------
+            // 2) DEBUG EXPRESS via Nodemon (Auto-Restart)
+            // ------------------------------
+            "type": "node",
+            "request": "launch",
+            "name": "Debug with Nodemon",
+            "runtimeExecutable": "nodemon",
+            "program": "${workspaceFolder}/src/server.js",
+            "envFile": "${workspaceFolder}/.env",
+            "console": "integratedTerminal",
+            "restart": true,
+            "args": [
+                "--inspect"
+            ],
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+        {
+            // ------------------------------
+            // 3) ATTACH DEBUGGER to Nodemon
+            //    (Jika nodemon dijalankan manual)
+            // ------------------------------
+            "type": "node",
+            "request": "attach",
+            "name": "Attach to Nodemon",
+            "port": 9229,
+            "restart": true,
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+        {
+            // ------------------------------
+            // 4) DEBUG PRISMA Studio
+            // ------------------------------
+            "type": "node",
+            "request": "launch",
+            "name": "Prisma Studio",
+            "runtimeExecutable": "npx",
+            "runtimeArgs": [
+                "prisma",
+                "studio"
+            ],
+            "console": "integratedTerminal"
+        }
+    ]
+}
